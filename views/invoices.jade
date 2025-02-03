@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  h1 Book Store
+  h2 Invoice
+  div#invoice-details
+    p Name: #{fname} #{lname}
+    p Shipping Address: #{address}
+      br #{city}
+      br #{zip}
+    p Shipment Date: #{formattedShipmentDate}
+  table#invoice-table
+    thead
+      tr
+        th ISBN
+        th Title
+        th Price
+        th QTY
+        th Total
+    tbody
+      each item in cartItems
+        - const itemTotal = item.qty * item.price
+        - const maxTitleLength = 55
+        - const title = item.title
+        if title.length > maxTitleLength
+          - const firstLine = title.substring(0, maxTitleLength)
+          - const secondLine = title.substring(maxTitleLength)
+          tr
+            td= item.isbn
+            td
+              | #{firstLine}
+              br
+              | #{secondLine}
+            td= item.price
+            td= item.qty
+            td= itemTotal
+        else
+          tr
+            td= item.isbn
+            td= title
+            td= item.price
+            td= item.qty
+            td= itemTotal
+  div#invoice-total-price Total Price: #{totalPrice}
