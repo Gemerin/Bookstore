@@ -1,4 +1,4 @@
-# Book Store Express App - Saskia Heinemann
+# Book Store Express App
 
 This is an Express.js application for managing a bookstore. It includes user registration, login, and various book-related functionalities like search and ordering of books.
 
